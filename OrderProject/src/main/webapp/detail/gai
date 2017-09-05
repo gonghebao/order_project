@@ -1,0 +1,4 @@
+caidan_listDAO  //查询所有的菜         对象: caidan_list
+foodtypeDAO     //查询猜的品种               foodtype
+caidao_someDAO  //通过input搜索菜		 caidan_list
+

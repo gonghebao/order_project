@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="test">
+		<select id="findcaixi" parameterType="entity1.caixi_list" resultType="entity1.caixi_list">
+	select * from ( select rownum rn,t.* from (select foodname,id,img,price from food_1705 where foodtype_id=#{foodtype_id} order by id ) t) where rn between #{start} and #{end}
+	</select>
+	<select id="findcaidan" parameterType="entity1.caidan_list" resultType="entity1.caidan_list">
+		select * from (select rownum rn,t.* from (select * from food_1705 order by id) t) where rn between #{start} and #{end}
+	</select>
+	<select id="findfoodtype" resultType="entity1.foodtype">
+		select * from foodtype_1705
+	</select>
+	<select id="findsome" parameterType="entity1.caidan_list" resultType="entity1.caidan_list">
+		select * from (select rownum rn,t.* from (select * from food_1705 where foodname LIKE '%'||#{foodname}||'%' order by id) t) where rn between #{start} and #{end} 
+	</select>
+	<select id="findcaixiangxi" parameterType="int" resultType="entity1.Caixiangxi">
+		select foodname,img,price,mprice,remark from food_1705 where id=#{id}
+	</select>
+</mapper>
